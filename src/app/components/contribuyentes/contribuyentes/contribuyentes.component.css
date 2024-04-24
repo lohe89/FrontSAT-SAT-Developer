@@ -1,0 +1,79 @@
+h2 {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.card {
+  margin-top: 2%;
+  --bs-card-border-color: rgb(0 0 0 / 30%);
+}
+
+.row {
+  margin-bottom: 2%;
+}
+
+.custom-file-button input[type=file] {
+  margin-left: -2px !important;
+}
+
+.custom-file-button input[type=file]::-webkit-file-upload-button {
+  display: none;
+}
+
+.custom-file-button input[type=file]::file-selector-button {
+  display: none;
+}
+
+.custom-file-button:hover label {
+  background-color: #dde0e3;
+  cursor: pointer;
+}
+
+.txtCenter {
+  text-align: center;
+}
+
+.textJustify{
+  text-align: justify;
+}
+
+button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.divAdd{
+  text-align: right;
+}
+
+#certificadoFile,
+#clavePrivadaFile,
+#csfFile,
+#datosContribuyente,
+#descargaMasiva{
+  display: none;
+}
+
+#certificadoFile-label,
+#keyFile-label,
+#csfFile-label{
+  font-size: 1em;
+  padding: 10px 15px;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 4%;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lblHead{
+  padding: 10px;
+  width: 100%;
+  background-color: #e9e9e9;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
