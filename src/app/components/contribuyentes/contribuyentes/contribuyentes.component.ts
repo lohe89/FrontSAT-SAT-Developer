@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-
+import 'datatables.net-buttons-dt';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 import {
@@ -11,6 +11,10 @@ import {
   ActividadEconomicaService,
   DescargaMasivaService
 } from '../../../services';
+import { Config } from 'datatables.net';
+import { ADTSettings } from 'angular-datatables/src/models/settings';
+
+
 
 @Component({
   selector: 'app-contribuyentes',
@@ -19,7 +23,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ContribuyentesComponent implements OnInit {
+export class ContribuyentesComponent implements OnInit, OnDestroy {
   n: number = 0;
   s: number = 0;
   a: number = 0;
@@ -46,6 +50,9 @@ export class ContribuyentesComponent implements OnInit {
   labelKey: string = 'Selecciona archivo .key';
   labelCSF: string = 'Selecciona archivo .pdf';
   respDescargaMasiva: any;
+  dtOptions: Config = {};
+  // dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger: Subject<ADTSettings> = new Subject<ADTSettings>();
 
   //modales
   @ViewChild("modalNuevoContribuyente", { static: false })
@@ -69,28 +76,60 @@ export class ContribuyentesComponent implements OnInit {
     private _actividadService: ActividadEconomicaService,
     private _regimenService: RegimenFiscalService,
     private _descargaXMLService: DescargaMasivaService,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
   ) {
     this.localeService.use('es');
   }
 
   async ngOnInit(): Promise<any> {
     
-    await this.obtenerAllContribuyentes();
+    await this.obtenerAllContribuyentes();    
   }
   
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
   async obtenerAllContribuyentes() {
+    this.dtTrigger.next(this.dtOptions);
     await this._clienteService.obtenerAllContribuyentes()
       .subscribe({
         next: response => {
           this.contribuyentes = response;
-          this.cantClientes = this.contribuyentes.length;
+          setTimeout(()=>{
+          $('#dtC').DataTable({
+            pagingType: 'full_numbers',
+            pageLength: 2,
+            language:{ url: 'https://cdn.datatables.net/plug-ins/2.0.5/i18n/es-MX.json'},
+            processing: true,
+            lengthMenu:[5,10,25],
+            dom: 'Bfrtip',
+            buttons: [
+              'columnsToggle',
+              'colvis',
+              'copy',
+              {
+                extend: 'csv',
+                text: 'CSV export',
+                fieldSeparator: ',',
+                exportOptions: [1, 2, 3]
+              },
+              'excel',
+              {
+                text: 'Some button',
+                key: '1',
+                action: function (e, dt, node, config) {
+                  alert('Button activated');
+                }
+              }
+            ]
+          });},1);
           this._cdr.detectChanges();
         },
         error: err => {
           console.log(err);
         }
-      });
+      });      
   }
 
   abrirModalNuevoContribuyente() {
