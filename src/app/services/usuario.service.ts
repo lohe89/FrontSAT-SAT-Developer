@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from "./api.service";
 import { UsuarioConstante } from "./../config/constantes";
+import { UsuarioAPI } from '../Interfaces/usuario-api';
+import { LoginAPI } from '../Interfaces/login-api';
+import { Observable } from 'rxjs';
+import { ResponseAPI } from '../Interfaces/response-api';
 
 @Injectable()
 export class UsuarioService {
@@ -9,28 +13,23 @@ export class UsuarioService {
 		private _apiServicio: ApiService,
 	) {	}
 	
-	ObtenerUsuarios() {
-		return this._apiServicio.Get(this._usuarioConstante.URLUsuarios);
+	iniciarSesion(request:LoginAPI):Observable<ResponseAPI>{
+		return this._apiServicio.ResponsePost(request,this._usuarioConstante.URLIniciarSesion);
+	}
+
+	lista(request: UsuarioAPI):Observable<ResponseAPI> {
+		return this._apiServicio.ResponseGet(this._usuarioConstante.URLListar);
 	}
 	
-	ObtenerUsuarioPorID(UsuarioID: number) {
-		return this._apiServicio.Get(this._usuarioConstante.URLObtenerUsuariosID);
+	guardar(request: UsuarioAPI):Observable<ResponseAPI> {
+		return this._apiServicio.ResponsePost(request,this._usuarioConstante.URLGuardar);
 	}
 
-	ActualizarPassword(usuario: any) {
-		return this._apiServicio.Post(usuario, this._usuarioConstante.URLActualizarPassword);
+	editar(request: UsuarioAPI):Observable<ResponseAPI> {
+		return this._apiServicio.ResponsePut(request, this._usuarioConstante.URLEditar);
 	}
-
-	ResetearPassword(usuario: any) {
-		return this._apiServicio.Post(usuario, this._usuarioConstante.URLResetearPassword);
+	
+	eliminar(id: number):Observable<ResponseAPI> {
+		return this._apiServicio.ResponsePut(id, this._usuarioConstante.URLEditar);
 	}
-
-	ActualizarUsuario(usuario: any) {
-		return this._apiServicio.Post(usuario, this._usuarioConstante.URLActualizaUsuario);
-	}
-
-	ActualizaPassSin(datos: any) {
-		return this._apiServicio.Post(datos, this._usuarioConstante.URLObtenerUsuarioSinActualizaPassword);
-	}
-
 }

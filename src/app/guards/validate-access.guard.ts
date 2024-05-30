@@ -7,9 +7,10 @@ import { Menu, Formulario, Modulo } from '../layout/sidebar/sidebar.component';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidateAccessGuard implements CanActivate {
+export class ValidateAccessGuard {
+// implements CanActivate {
 
-
+/*
   constructor(private router: Router, private __menuService: MenuService, private __coockieService: CookieService) {
   }
 
@@ -103,5 +104,5 @@ export class ValidateAccessGuard implements CanActivate {
       }
     });
   }
-
+*/
 }

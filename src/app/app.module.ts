@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { RoutesModule } from './components/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { ContribuyentesModule } from './components/contribuyentes/contribuyentes/contribuyentes.module';
-import { LayoutModule } from './layout/layout.module';
 import { LoginModule } from './components/login/login.module';
-import { AuthGuard } from './guards/Auth.guard';
-import { CoreModule } from './core/core.module';
+import { LayoutModule } from './components/layout/layout.module';
 
 //Constantes
 import {
@@ -72,28 +69,26 @@ const APP_MODULOS = [
   BrowserModule,
   AppRoutingModule,
   HttpClientModule,
-  RoutesModule,
+  // RoutesModule,
   BrowserAnimationsModule,
-  LayoutModule,
-  CoreModule
+  
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     ...APP_MODULOS,
-    ToolbarComponent,
-    SharedModule.forRoot(),
-    ContribuyentesModule,
-    LoginModule,
+    SharedModule.forRoot(),    
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    LayoutModule,
+    ContribuyentesModule,
+    LoginModule
   ],
   providers: [
-    AuthGuard,
     ...APP_CONSTANTES,
     ...APP_SERVICIOS
   ],

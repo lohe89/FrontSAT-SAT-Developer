@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { SettingsService } from '../../../core/settings/settings.service';
 import { ToastrService } from 'ngx-toastr';
 
 //Servicios
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
         private __coockieService: CookieService,
         private authenticationService: AuthenticationService,
         private _usuarioService: UsuarioService,
-        public settings: SettingsService,
         private loginService: LoginService,
         private route: ActivatedRoute,
         private router: Router,

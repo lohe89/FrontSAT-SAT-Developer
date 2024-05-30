@@ -10,7 +10,7 @@ import {
   RegimenFiscalService,
   ActividadEconomicaService,
   DescargaMasivaService
-} from '../../../services';
+} from '../../../../services';
 import { Config } from 'datatables.net';
 import { ADTSettings } from 'angular-datatables/src/models/settings';
 

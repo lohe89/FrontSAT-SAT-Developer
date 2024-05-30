@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders, HttpParams, HttpHeaderResponse, HttpErrorRespo
 //Constantes
 import { ConfiguracionConstante } from '../config/constantes';
 import { Observable } from 'rxjs';
+import { ResponseAPI } from '../Interfaces/response-api';
+import { LoginAPI } from '../Interfaces/login-api';
 
 @Injectable({
   providedIn: 'root'
@@ -79,5 +81,27 @@ export class ApiService {
   uploadFile(formData: FormData, ruta: string):Observable<any>{
     return this.http.post(this._constante.API_ENDPOINT + ruta, formData)
   }
+
+// ResponseAPI
+
+ResponsePost(request: any,ruta: string){
+  return this.http.post<ResponseAPI>(this._constante.API_ENDPOINT + ruta,request);
+}
+
+ResponseGet(ruta: string){
+  return this.http.get<ResponseAPI>(this._constante.API_ENDPOINT + ruta);
+}
+
+ResponseGetId(id: number ,ruta: string){
+  return this.http.get<ResponseAPI>(this._constante.API_ENDPOINT + ruta + id);
+}
+
+ResponsePut(request: any,ruta: string){
+  return this.http.put<ResponseAPI>(this._constante.API_ENDPOINT + ruta,request);
+}
+
+ResponseDelete(id: number,ruta: string){
+  return this.http.delete<ResponseAPI>(this._constante.API_ENDPOINT + ruta + id);
+}
 
 }

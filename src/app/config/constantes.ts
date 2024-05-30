@@ -7,12 +7,19 @@ export class LoginConstante {
 }
 
 export class UsuarioConstante {
-	public URLUsuarios = "usuario/obtenerAllUsuarios";
-	public URLObtenerUsuariosID = "usuario/obtenerUsuarioId";
-	public URLActualizarPassword = "usuario/actualizarPassword";
-	public URLResetearPassword = "usuario/resetearPassword";
-	public URLActualizaUsuario = "usuario/actalizarUsuario";
-	public URLObtenerUsuarioSinActualizaPassword = 'usuario/sinActualizarPassword';
+	public URLIniciarSesion = "api/Usuario/IniciarSesion";
+	public URLListar = "api/Usuario/Lista";
+	public URLGuardar = "api/Usuario/GuardarUsuario";
+	public URLEditar = "api/Usuario/EditarUsuario";
+	public URLEliminar = "api/Usuario/EliminarUsuario/";
+}
+
+export class RolConstante{
+	public URLListar = "api/Rol/Lista";
+}
+
+export class MenuConstante{
+	public URLListar = "api/Rol/Lista?idUsuario=";
 }
 
 export class ContribuyenteConstante {
