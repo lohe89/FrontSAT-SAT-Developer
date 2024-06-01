@@ -5,13 +5,17 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import { LoginAPI } from 'src/app/Interfaces/login-api';
+import { UsuarioAPI } from 'src/app/Interfaces/usuario-api';
+import { UtilidadService } from 'src/app/shared/utilidad.service';
+
 
 //Servicios
 import {
     AuthenticationService,
     UsuarioService,
     LoginService,
-} from '../../../services';
+} from '../../services';
 
 @Component({
     selector: 'app-login',
@@ -20,7 +24,7 @@ import {
 })
 
 export class LoginComponent implements OnInit {
-    valForm: FormGroup;
+    valForm: FormGroup; //formulario login
     returnUrl: string = '';
     loading: boolean = false;
     DIA: number = 86400000;
@@ -29,10 +33,10 @@ export class LoginComponent implements OnInit {
     isText: boolean = false;
     eyeIcon: string = 'eye-slash-fill.svg';
     type: string = 'password';
+    mostrarLoading: boolean = false;
 
     constructor(
-        private __coockieService: CookieService,
-        private authenticationService: AuthenticationService,
+        private _utilidadServicio: UtilidadService, 
         private _usuarioService: UsuarioService,
         private loginService: LoginService,
         private route: ActivatedRoute,
@@ -46,25 +50,35 @@ export class LoginComponent implements OnInit {
             'password': ['', [Validators.required, Validators.minLength(6)]]
         });
     }
+    
+    IniciarSesion(){
+        this.loading = true ;    
+        const request: LoginAPI = {
+            email: this.valForm.value.email,
+            password: this.valForm.value.password,
+        }    
 
-    ngOnInit() {
-        this.__coockieService.deleteAll('../');
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this._usuarioService.iniciarSesion(request).subscribe({
+            next:(data) => {
+                if(data.estatus){
+                    this._utilidadServicio.guardarSesionUsuario(data.value);
+                    this.router.navigate(["layout/"]);
+                }else{
+                    this._utilidadServicio.mostrarAlerta("No se encontraron coincidencias", "OPPS!");    
+                }
+            },
+            complete:() => {
+                this.loading = false;
+            },
+            error:(error) => {
+                this._utilidadServicio.mostrarAlerta(error.message, "OPPS!");    
+            }
+        });
     }
 
-    submitForm($ev: any) {
-        this.loading = true;
-        $ev.preventDefault();
-        for (let c in this.valForm.controls) {
-            this.valForm.controls[c].markAsTouched();
-        }
-        this.__coockieService.deleteAll();
 
-        if (this.valForm.get('email')?.value) {
-
-        } else {
-            this.loading = false;
-        }
+    ngOnInit() {        
+         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     hideShowPass() {

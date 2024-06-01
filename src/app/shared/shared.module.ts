@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataTablesModule } from 'angular-datatables';
@@ -73,15 +73,17 @@ import{MatTooltipModule} from '@angular/material/tooltip';
     LayoutModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   exports: [
-    RouterModule,
+    // RouterModule,
     AccordionModule,
     AlertModule,
     ButtonsModule,
     CarouselModule,
     CollapseModule,
+    CommonModule,
     BsDropdownModule,
     BsDatepickerModule,
     ModalModule,
@@ -97,7 +99,8 @@ import{MatTooltipModule} from '@angular/material/tooltip';
     LayoutModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ]
 })
 

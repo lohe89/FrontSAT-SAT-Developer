@@ -8,7 +8,7 @@
               <h3 class="pt-3 txtInicio">Iniciar Sesión</h3>
             </div>
             <div class="panel-body p-3">
-              <form [formGroup]="valForm" (submit)="submitForm($event)">
+              <form [formGroup]="valForm" (submit)="IniciarSesion()">
                 <div class="form-group pt-3">
                   <div class="input-field"
                     [class.error]="valForm.controls['email'].dirty && valForm.hasError('required','email')"> <span
@@ -36,7 +36,7 @@
                 <small *ngIf="valForm.controls['password'].hasError('minlength')" class="text-danger">*Longitud debe ser minimo 6 caracteres*</small>
                 <div class="form-inline fr mt-4"> <a id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     class="font-weight-bold">Forgot password?</a> </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Ingresar</button>
+                <button type="submit" class="btn btn-primary btn-block mt-4 w-100" [disabled]="valForm.invalid">Ingresar</button>
               </form>
             </div>
             <div class="mx-3 my-2 py-2 bordert">

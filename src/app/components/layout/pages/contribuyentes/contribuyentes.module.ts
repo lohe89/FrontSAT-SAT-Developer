@@ -10,9 +10,9 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
 defineLocale('es', esLocale);
 
-const routes: Routes = [
-  { path: '', component: ContribuyentesComponent },
-];
+// const routes: Routes = [
+//   { path: '', component: ContribuyentesComponent },
+// ];
 
 @NgModule({
   declarations: [ContribuyentesComponent],
@@ -25,7 +25,7 @@ const routes: Routes = [
     SharedModule,
   ],
   exports: [
-    RouterModule,
+    // RouterModule,
     ContribuyentesComponent
   ]
 })

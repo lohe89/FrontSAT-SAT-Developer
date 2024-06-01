@@ -4,21 +4,32 @@
         <button mat-icon-button (click)="sidenav.toggle();">
             <mat-icon>menu</mat-icon>
         </button>
+
+        <span style="flex: 1 1 auto"></span>
+        <label style='font-size: 14px; margin-right: 20px;'>
+            {{email}} | {{rolUsuario}}
+        </label>
+        <button (click) = "cerrarSesion()">
+            <mat-icon>
+                logout
+            </mat-icon>
+        </button>
+
     </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>
     <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px;">
         <mat-nav-list>
-            <mat-list-item routerLink="/Pages/dashboard">
+            <mat-list-item routerLink="/layout/dashboard">
                 <mat-icon mat-list-icon>dashboard</mat-icon>
                 <div mat-line>Dashboard</div>
             </mat-list-item>
-            <mat-list-item routerLink="/Pages/usuarios">
+            <mat-list-item routerLink="/layout/usuarios">
                 <mat-icon mat-list-icon>group</mat-icon>
                 <div mat-line>Usuarios</div>
             </mat-list-item>
-            <mat-list-item routerLink="/Pages/contribuyentes">
+            <mat-list-item routerLink="/layout/contribuyentes">
                 <mat-icon mat-list-icon>group</mat-icon>
                 <div mat-line>Contribuyentes</div>
             </mat-list-item>
