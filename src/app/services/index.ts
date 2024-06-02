@@ -8,3 +8,4 @@ export * from './constanciaSituacionFiscal.service';
 export * from './actividadEconomica.service';
 export * from './regimenFiscal.service';
 export * from './descargaMasiva.service';
+export * from './rol.service';

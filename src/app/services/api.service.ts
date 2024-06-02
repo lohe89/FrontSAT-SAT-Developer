@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders, HttpParams, HttpHeaderResponse, HttpErrorRespo
 import { ConfiguracionConstante } from '../config/constantes';
 import { Observable } from 'rxjs';
 import { ResponseAPI } from '../Interfaces/response-api';
-import { LoginAPI } from '../Interfaces/login-api';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SesionAPI } from '../Interfaces/sesion-api';
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 
 @Injectable({
   providedIn: 'root'

@@ -19,7 +19,9 @@ import {
   FormularioConstante,
   ActividadEconomicaConstante,
   RegimenFiscalConstante,
-  DescargaMasivaConstante
+  DescargaMasivaConstante,
+  MenuConstante,
+  RolConstante
 } from './config/constantes';
 
 //Servicios
@@ -33,7 +35,8 @@ import {
   UsuarioService,
   ActividadEconomicaService,
   RegimenFiscalService,
-  DescargaMasivaService
+  DescargaMasivaService,
+  RolService
 } from './services';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -48,7 +51,9 @@ const APP_CONSTANTES = [
   FormularioConstante,
   ActividadEconomicaConstante,
   RegimenFiscalConstante,
-  DescargaMasivaConstante
+  DescargaMasivaConstante,
+  MenuConstante,
+  RolConstante
 ];
 
 const APP_SERVICIOS = [
@@ -61,7 +66,8 @@ const APP_SERVICIOS = [
   UsuarioService,
   ActividadEconomicaService,
   RegimenFiscalService,
-  DescargaMasivaService
+  DescargaMasivaService,
+  RolService
 ];
 
 const APP_MODULOS = [

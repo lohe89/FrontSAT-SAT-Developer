@@ -19,7 +19,7 @@ export class RolConstante{
 }
 
 export class MenuConstante{
-	public URLListar = "api/Rol/Lista?idUsuario=";
+	public URLListar = "api/Menu/Lista?idUsuario=";
 }
 
 export class ContribuyenteConstante {

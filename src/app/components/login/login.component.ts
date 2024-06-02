@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
             next:(data) => {
                 if(data.estatus){
                     this._utilidadServicio.guardarSesionUsuario(data.value);
-                    this.router.navigate(["layout/"]);
+                    this.router.navigate(["layout"]);
                 }else{
                     this._utilidadServicio.mostrarAlerta("No se encontraron coincidencias", "OPPS!");    
                 }

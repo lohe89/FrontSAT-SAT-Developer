@@ -26,7 +26,7 @@ export class LayoutComponent implements OnInit{
 
     if(usuario != null){
       this.email = usuario.email;
-      this.rolUsuario = usuario.rolUsuario;
+      this.rolUsuario = usuario.rolDescripcion;
 
       this.menuService.lista(usuario.idUsuario).subscribe({
         next: (data)=>{
@@ -37,6 +37,10 @@ export class LayoutComponent implements OnInit{
         }
       });
     }
+    else{
+      this.router.navigate(['login']);
+    }
+
   }
 
   cerrarSesion(){
