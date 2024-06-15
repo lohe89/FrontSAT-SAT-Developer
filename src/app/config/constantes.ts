@@ -1,5 +1,7 @@
 export class ConfiguracionConstante {
 	public API_ENDPOINT = "https://localhost:7287/";
+	//public API_ENDPOINT = "https://proweb2021.ddns.net:7287/";
+	 //public API_ENDPOINT = "http://187.148.99.86:7287/";
 }
 
 export class LoginConstante {

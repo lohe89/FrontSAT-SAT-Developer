@@ -11,7 +11,7 @@ const routes: Routes = [
   //  { path: 'contribuyentes', component: ContribuyentesComponent},
   //  { path: 'usuario', component: UsuarioComponent},
   { path: 'layout', loadChildren:() => import('./components/layout/layout.module').then(m => m.LayoutModule) },
-  { path: '**', loadChildren:() => import('./components/login/login.module').then(m => m.LoginModule) },
+  { path: '**', redirectTo: '/login', pathMatch: "full" },
 ];
 
 @NgModule({

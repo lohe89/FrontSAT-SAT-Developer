@@ -77,3 +77,19 @@ button {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+::ng-deep .mat-drawer{
+  z-index: 1 !important;
+}
+
+
+::ng-deep .modal-backdrop {
+  z-index: 0 !important;
+}
+
+::ng-deep .modal {
+  z-index: 2!important;
+}
+.text-white {
+  color: #fff !important;
+}
